@@ -26,5 +26,16 @@ services:
     depends_on:
       - mysql
 
+  apache:
+    image: php:8.2-apache
+    container_name: apache
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    depends_on:
+      - mysql
+
 volumes:
   mysql_data:
